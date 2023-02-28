@@ -1,0 +1,37 @@
+[2023-02-26 14:41:12,542] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: get_taxi_availability.taxi_api_to_db scheduled__2023-02-26T14:36:00+00:00 [queued]>
+[2023-02-26 14:41:12,550] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: get_taxi_availability.taxi_api_to_db scheduled__2023-02-26T14:36:00+00:00 [queued]>
+[2023-02-26 14:41:12,550] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2023-02-26 14:41:12,551] {taskinstance.py:1357} INFO - Starting attempt 3 of 3
+[2023-02-26 14:41:12,551] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2023-02-26 14:41:12,562] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): taxi_api_to_db> on 2023-02-26 14:36:00+00:00
+[2023-02-26 14:41:12,567] {standard_task_runner.py:52} INFO - Started process 6128 to run task
+[2023-02-26 14:41:12,571] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'get_taxi_availability', 'taxi_api_to_db', 'scheduled__2023-02-26T14:36:00+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/get_taxi_availability.py', '--cfg-path', '/tmp/tmp_smx8hmm', '--error-file', '/tmp/tmpsqtgtyc1']
+[2023-02-26 14:41:12,571] {standard_task_runner.py:80} INFO - Job 7: Subtask taxi_api_to_db
+[2023-02-26 14:41:12,583] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/configuration.py:525: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  option = self._get_environment_variables(deprecated_key, deprecated_section, key, section)
+
+[2023-02-26 14:41:12,617] {task_command.py:370} INFO - Running <TaskInstance: get_taxi_availability.taxi_api_to_db scheduled__2023-02-26T14:36:00+00:00 [running]> on host 0337baec7fd8
+[2023-02-26 14:41:12,673] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=get_taxi_availability
+AIRFLOW_CTX_TASK_ID=taxi_api_to_db
+AIRFLOW_CTX_EXECUTION_DATE=2023-02-26T14:36:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=3
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-02-26T14:36:00+00:00
+[2023-02-26 14:41:12,674] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/functions/taxi_availability.py", line 65, in run_taxi_api_to_db
+    etl.extract()
+  File "/opt/airflow/dags/functions/taxi_availability.py", line 33, in extract
+    self.df = json_normalize(self.data)
+AttributeError: 'TaxiReadApi' object has no attribute 'data'
+[2023-02-26 14:41:12,684] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=get_taxi_availability, task_id=taxi_api_to_db, execution_date=20230226T143600, start_date=20230226T144112, end_date=20230226T144112
+[2023-02-26 14:41:12,694] {standard_task_runner.py:97} ERROR - Failed to execute job 7 for task taxi_api_to_db ('TaxiReadApi' object has no attribute 'data'; 6128)
+[2023-02-26 14:41:12,703] {local_task_job.py:156} INFO - Task exited with return code 1
+[2023-02-26 14:41:12,736] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
