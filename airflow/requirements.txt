@@ -1,5 +1,0 @@
-psycopg2-binary
-apache-airflow-providers-jdbc
-apache-airflow-providers-postgres
-pytz
-pandas

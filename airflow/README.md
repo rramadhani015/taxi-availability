@@ -1,3 +1,0 @@
-# etl-airflow
-
-# Setup Airflow
