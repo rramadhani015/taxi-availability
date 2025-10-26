@@ -82,7 +82,25 @@ graph TD
 - **Description:** Performs data quality checks (row counts, nulls, basic consistency) and logs results in Snowflake.
 
 ---
+## Postgres Table DDL
+### `TAXI_AVAILABILITY`
+```sql
+CREATE TABLE public.taxi_availability (
+    id SERIAL PRIMARY KEY,
+    type TEXT,
+    crs_type TEXT,
+    crs_properties_href TEXT,
+    crs_properties_type TEXT,
+    feature_type TEXT,
+    geometry_type TEXT,
+    geometry_coordinates JSONB,
+    properties_timestamp TIMESTAMP,
+    properties_taxi_count INTEGER,
+    properties_api_info_status TEXT
+);
+````
 
+---
 ## Snowflake Table DDLs
 
 ### `TAXI_AVAILABILITY`
@@ -131,6 +149,24 @@ CREATE OR REPLACE TABLE TAXI_LOCATION (
     RECORD_STATUS STRING DEFAULT 'ACTIVE'
 );
 ```
+
+
+### `DQ_LOG_TAXI`
+
+```sql
+CREATE OR REPLACE TABLE DQ_LOG_TAXI (
+    DWH_ID STRING DEFAULT UUID_STRING() PRIMARY KEY,  -- surrogate key for log
+    TABLE_NAME STRING,                                -- table checked
+    RUN_ID STRING,                                    -- Airflow run_id
+    CHECK_TIMESTAMP TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP,
+    TOTAL_ROWS INTEGER,
+    UNIQUE_DWH INTEGER,
+    NULL_COUNT INTEGER,                                -- e.g., nulls in critical columns
+    ORPHAN_ROWS INTEGER,                               -- if applicable
+    ADDITIONAL_INFO VARIANT                            -- optional JSON for extra metrics
+);
+```
+
 
 ---
 
