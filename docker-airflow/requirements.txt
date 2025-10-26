@@ -1,0 +1,9 @@
+psycopg2-binary
+apache-airflow-providers-jdbc
+apache-airflow-providers-postgres
+apache-airflow-providers-snowflake
+snowflake-connector-python
+libm-devel
+openssl-devel
+pytz
+pandas
