@@ -53,10 +53,10 @@ project/
 graph TD
     A[Taxi Availability API] --> B[PostgreSQL Staging - taxi_availability]
     A[Taxi Availability API] --> C[Blob Storage - CSV files]
-    B --> D[Airflow DAG: load_to_snowflake]
+    B --> D[Load to Snowflake as DWH]
     D --> E[TAXI_AVAILABILITY]
     D --> F[TAXI_GEOMETRY]
-    D --> G[TAXI_LOCATION - future]
+    F --> G[TAXI_LOCATION - future]
     E --> H[Data Quality DAG: dq_check]
     F --> H
     G --> H
