@@ -50,7 +50,7 @@ project/
 
 ## DAG Overview
 
-flowchart LR
+graph LR
     A[Taxi Availability API] --> B[PostgreSQL Staging (taxi_availability)]
     B --> C[Airflow DAG: load_to_snowflake]
     C --> D[TAXI_AVAILABILITY]
