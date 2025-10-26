@@ -55,7 +55,7 @@ graph TD
     B --> C[Airflow DAG: load_to_snowflake]
     C --> D[TAXI_AVAILABILITY]
     C --> E[TAXI_GEOMETRY]
-    C --> F[TAXI_LOCATION - future]
+    E --> F[TAXI_LOCATION - future]
     D --> G[Data Quality DAG: dq_check]
     E --> G
     F --> G
