@@ -49,7 +49,7 @@ project/
 ---
 
 ## DAG Overview
-
+```mermaid
 graph LR
     A[Taxi Availability API] --> B[PostgreSQL Staging (taxi_availability)]
     B --> C[Airflow DAG: load_to_snowflake]
