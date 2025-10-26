@@ -52,14 +52,14 @@ project/
 ```mermaid
 graph TD
     A[Taxi Availability API] --> B[PostgreSQL Staging - taxi_availability]
-    A[Taxi Availability API] --> B[Blob Storage - CSV files]
-    B --> C[Airflow DAG: load_to_snowflake]
-    C --> D[TAXI_AVAILABILITY]
-    C --> E[TAXI_GEOMETRY]
-    E --> F[TAXI_LOCATION - future]
-    D --> G[Data Quality DAG: dq_check]
-    E --> G
-    F --> G
+    A[Taxi Availability API] --> C[Blob Storage - CSV files]
+    B --> D[Airflow DAG: load_to_snowflake]
+    D --> E[TAXI_AVAILABILITY]
+    D --> F[TAXI_GEOMETRY]
+    D --> G[TAXI_LOCATION - future]
+    E --> H[Data Quality DAG: dq_check]
+    F --> H
+    G --> H
 ```
 
 ### 1. `ext_api_get_taxi_availability`
