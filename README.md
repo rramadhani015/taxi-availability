@@ -52,6 +52,7 @@ project/
 ```mermaid
 graph TD
     A[Taxi Availability API] --> B[PostgreSQL Staging - taxi_availability]
+    A[Taxi Availability API] --> B[Blob Storage - CSV files]
     B --> C[Airflow DAG: load_to_snowflake]
     C --> D[TAXI_AVAILABILITY]
     C --> E[TAXI_GEOMETRY]
@@ -64,7 +65,7 @@ graph TD
 ### 1. `ext_api_get_taxi_availability`
 - **Frequency:** Every 5 minutes
 - **Source:** Taxi availability API
-- **Target:** PostgreSQL `taxi_availability` table
+- **Target:** PostgreSQL `taxi_availability` table and CSV in blob storage (local directory to simulate)
 - **Description:** Microbatch ETL to ingest new taxi availability data into staging.
 
 ### 2. `load_to_snowflake`
