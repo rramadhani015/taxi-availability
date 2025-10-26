@@ -50,15 +50,15 @@ project/
 
 ## DAG Overview
 ```mermaid
-graph LR
-    A[Taxi Availability API] --> B[PostgreSQL Staging (taxi_availability)];
-    B --> C[Airflow DAG: load_to_snowflake];
-    C --> D[TAXI_AVAILABILITY];
-    C --> E[TAXI_GEOMETRY];
-    C --> F[TAXI_LOCATION (future)];
-    D --> G[Data Quality DAG: dq_check];
-    E --> G;
-    F --> G;
+graph TD
+    A[Taxi Availability API] --> B[PostgreSQL Staging - taxi_availability]
+    B --> C[Airflow DAG: load_to_snowflake]
+    C --> D[TAXI_AVAILABILITY]
+    C --> E[TAXI_GEOMETRY]
+    C --> F[TAXI_LOCATION - future]
+    D --> G[Data Quality DAG: dq_check]
+    E --> G
+    F --> G
 ```
 
 ### 1. `ext_api_get_taxi_availability`
