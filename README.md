@@ -59,6 +59,7 @@ graph LR
     D --> G[Data Quality DAG: dq_check]
     E --> G
     F --> G
+```
 
 ### 1. `ext_api_get_taxi_availability`
 - **Frequency:** Every 5 minutes
