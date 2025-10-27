@@ -24,7 +24,13 @@ def insert_taxi_general(**kwargs):
     context = kwargs or {}
     # --- Extract from Postgres ---
     pg = PostgresHook(postgres_conn_id="pg1")
-    query = "SELECT * FROM public.taxi_availability"
+    query = "SELECT *
+FROM (
+    SELECT *,
+           ROW_NUMBER() OVER (PARTITION BY properties_timestamp ORDER BY id) AS rn
+    FROM public.taxi_availability
+) t
+WHERE rn = 1;"
     df = pg.get_pandas_df(query)
 
     sf = SnowflakeHook(snowflake_conn_id=SNOWFLAKE_CONN_ID)
