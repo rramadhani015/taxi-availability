@@ -74,7 +74,7 @@ graph TD
   - `TAXI_AVAILABILITY` (general data)
   - `TAXI_GEOMETRY` (coordinates)
   - `TAXI_LOCATION` (future enrichment with reverse geocoding)
-- **Notes:** Inserts use batch operations with surrogate DWH keys and load batch IDs for traceability.
+- **Notes:** Inserts use batch operations with surrogate DWH keys and load batch IDs for traceability. Deduplication based on timestamp. 
 
 ### 3. `dq_check`
 - **Frequency:** Every 6 hours
